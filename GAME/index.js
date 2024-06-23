@@ -63,38 +63,22 @@ const removeButton = document.querySelector("#removeButton");
 const startModal = document.querySelector("#startModal");
 
 addButton.onclick = function () {
-  if (isGameRunning == false) {
-    if (playersAmount < 20) {
-      playersAmount++; // There is a new player in the game
+  playersAmount++; // There is a new player in the game
+  console.log(`${playersAmount} Players in the game`);
 
-      console.log(`${playersAmount} Players in the game`);
-    } else {
-      error(
-        "The player tried to add more than 20 players, throwing a new error"
-      );
-      alert("Maximum number of players reached");
-    }
-  } else {
-    error(
-      "The player tried to add a player while the game is running, throwing a new error"
-    );
+  if (playersAmount == 20) {
+    DisableButton(addButton);
   }
 };
 
 removeButton.onclick = function () {
-  if (isGameRunning == false) {
-    if (playersAmount > 3) {
-      playersAmount--; // A player have been removed
+  if (playersAmount > 3) {
+    playersAmount--; // A player have been removed
 
-      console.log(`${playersAmount} Players in the game`);
-    } else {
-      error("The game cannot have less than 3 players, throwing a new error");
-      alert("Minimum number of players reached");
-    }
-  } else {
-    error(
-      "The player tried to remove a player while the game is running, throwing a new error"
-    );
+    console.log(`${playersAmount} Players in the game`);
+  }
+  if (playersAmount == 3) {
+    DisableButton(removeButton);
   }
 };
 
@@ -128,6 +112,16 @@ function ChooseAPlace() {
 
 function error(errorMsg) {
   console.error(errorMsg);
+}
+
+function DisableButton(button) {
+  button.disabled = true;
+  button.classList.add("disabled");
+}
+
+function AbleButton(button) {
+    button.disabled = true;
+    button.classList.remove("disabled");
 }
 
 ChooseAPlace();
