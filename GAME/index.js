@@ -68,6 +68,8 @@ const addButton = document.querySelector("#addButton");
 const removeButton = document.querySelector("#removeButton");
 const startModal = document.querySelector("#startModal");
 
+FixButtons(); // Prepare the buttons
+
 addButton.onclick = function () {
   playersAmount++; // There is a new player in the game
   console.log(`${playersAmount} Players in the game`);
@@ -78,19 +80,14 @@ addButton.onclick = function () {
 };
 
 removeButton.onclick = function () {
-  if (playersAmount > 3) {
-    playersAmount--; // A player have been removed
+  playersAmount--;
+  console.log(`${playersAmount} Players in the game`);
 
-    console.log(`${playersAmount} Players in the game`);
-  }
-  if (playersAmount == 3) {
-    DisableButton(removeButton);
-  }
+  FixButtons();
 };
 
 startButton.onclick = function () {
   console.log("Game Started");
-  ChangePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
 
   isGameRunning = true; // The game started
   FixButtons();
@@ -132,14 +129,22 @@ function AbleButton(button) {
 
 function FixButtons() {
   // All of buttons logic
-  if (isGameRunning && startButton.disabled == false)
-    DisableButton(startButton);
-  if (isGameRunning && addButton.disabled == false) DisableButton(addButton);
-  if (isGameRunning && removeButton.disabled == false)
-    DisableButton(removeButton);
-  if (!isGameRunning && endButton.disabled == false) DisableButton(endButton);
-  else {
+  if (isGameRunning) {
+    if (startButton.disabled == false) DisableButton(startButton);
+    if (addButton.disabled == false) DisableButton(addButton);
+    if (removeButton.disabled == false) DisableButton(removeButton);
+    if (endButton.disabled == false) DisableButton(endButton);
+  } else {
+    AbleButton(startButton);
+    AbleButton(addButton);
     AbleButton(endButton);
+  }
+
+  // Colors Logics -----
+  if (isGameRunning) {
+    ChangePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
+  } else {
+    ChangePlayersButtonColor(false, greyPlayerButton);
   }
 }
 
@@ -164,7 +169,7 @@ function ChangePlayersButtonColor( // Change the players button color
         }
       });
     } catch (e) {
-      console.warn("Cannot access cssRules for stylesheet:", sheet.href, e);
+      console.warn("Algumas regras não podem ser acessadas");
     }
   });
 }

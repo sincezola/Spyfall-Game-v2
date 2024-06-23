@@ -44,14 +44,6 @@
   cursor: pointer;
 }
 
-#addButton {
-  background-color: rgb(0, 250, 0);
-}
-
-#removeButton {
-  background-color: rgb(250, 54, 54);
-}
-
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -85,21 +77,29 @@ dialog {
   cursor: pointer;
 }
 
-#startButton {
-  background-color: rgb(0, 250, 0); /* Verde */
+#startButton, #addButton {
+  background-color: rgba(39, 250, 39, 0.808); /* Verde */
 }
 
-#endButton {
-  background-color: rgb(250, 54, 54); /* Vermelho */
+#startButton:hover, #addButton:hover {
+    background-color: rgba(34, 199, 34, 0.623); /* Verde mais escuro */
 }
 
-#startButton:hover,
-#endButton:hover {
-  opacity: 0.9; /* Reduz um pouco a opacidade ao passar o mouse */
+#endButton, #removeButton {
+  background-color: rgb(230, 41, 41); /* Vermelho */
+}
+
+#endButton:hover, #removeButton {
+  background-color: rgba(145, 28, 28, 0.897);
+}
+
+#endButton, #startButton, #addButton, #removeButton, .playerButton {
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 2px 2px 2px black;
 }
 
 body {
-  background-color: rgba(139, 138, 138, 0.877);
+  background-color: rgba(110, 109, 109, 0.877);
 }
 
 @media (max-width: 768px) {
