@@ -1,112 +1,121 @@
 * {
-    font-family: "Lato", sans-serif;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #playersButtons {
-    display: flex;
-    flex-direction: column; /* Altera a direção para coluna */
-    align-items: center; /* Centraliza os itens na coluna */
-    gap: 8px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Altera a direção para coluna */
+  align-items: center; /* Centraliza os itens na coluna */
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .playerButton {
-    font-size: 1.2em;
-    color: black;
-    background-color: rgba(93, 216, 247, 0.904);
-    border-radius: 5px;
-    padding: 0px 30px; /* Ajusta o padding para espaçamento interno maior */
-    cursor: pointer;
-    width: 100%; /* Ocupa 100% da largura disponível */
-    max-width: 600px; /* Limita a largura máxima */
-    text-align: center; /* Centraliza o texto */
-    height: 40px; /* Aumenta a altura dos botões */
+  font-size: 1.2em;
+  color: rgba(255, 255, 255, 0.493);
+  background-color: rgba(23, 25, 26, 0.904);
+  border-radius: 5px;
+  padding: 0px 30px; /* Ajusta o padding para espaçamento interno maior */
+  cursor: pointer;
+  width: 100%; /* Ocupa 100% da largura disponível */
+  max-width: 600px; /* Limita a largura máxima */
+  text-align: center; /* Centraliza o texto */
+  height: 40px; /* Aumenta a altura dos botões */
 }
 
 #AddRemoveButtons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-#addButton, #removeButton {
-    font-size: 1.4em;
-    color: black;
-    border-radius: 6px;
-    padding: 7px 20px; /* Ajusta o padding para espaçamento interno maior */
-    margin-top: 15px;
-    cursor: pointer;
+#addButton,
+#removeButton {
+  font-size: 1.4em;
+  color: black;
+  border-radius: 6px;
+  padding: 7px 20px; /* Ajusta o padding para espaçamento interno maior */
+  margin-top: 15px;
+  cursor: pointer;
 }
 
 #addButton {
-    background-color: rgb(0, 250, 0);
+  background-color: rgb(0, 250, 0);
 }
 
 #removeButton {
-    background-color: rgb(250, 54, 54);
+  background-color: rgb(250, 54, 54);
 }
 
 dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 dialog {
-    border: none;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
-    width: 80%;
-    padding: 20px;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+  width: 80%;
+  padding: 20px;
 }
 
 #StartEndButtons {
-    position: fixed;
-    bottom: 100px; /* Distância um pouco maior do fundo da tela */
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente para melhor visibilidade */
-    padding: 10px; /* Espaçamento interno dos botões */
-    z-index: 999; /* Coloca os botões acima de outros elementos */
+  position: fixed;
+  bottom: 100px; /* Distância um pouco maior do fundo da tela */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px; /* Espaçamento interno dos botões */
+  z-index: 999; /* Coloca os botões acima de outros elementos */
 }
 
-#startButton, #endButton {
-    font-size: 1.4em;
-    color: rgb(0, 0, 0);
-    border-radius: 6px;
-    padding: 10px 20px;
-    cursor: pointer;
+#startButton,
+#endButton {
+  font-size: 1.4em;
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 #startButton {
-    background-color: rgb(0, 250, 0); /* Verde */
+  background-color: rgb(0, 250, 0); /* Verde */
 }
 
 #endButton {
-    background-color: rgb(250, 54, 54); /* Vermelho */
+  background-color: rgb(250, 54, 54); /* Vermelho */
 }
 
-#startButton:hover, #endButton:hover {
-    opacity: 0.9; /* Reduz um pouco a opacidade ao passar o mouse */
+#startButton:hover,
+#endButton:hover {
+  opacity: 0.9; /* Reduz um pouco a opacidade ao passar o mouse */
+}
+
+body {
+  background-color: rgba(139, 138, 138, 0.877);
 }
 
 @media (max-width: 768px) {
-    #playersButtons, #AddRemoveButtons {
-        flex-direction: column;
-        align-items: center;
-    }
+  #playersButtons,
+  #AddRemoveButtons {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .playerButton, #addButton, #removeButton {
-        width: 100%;
-    }
+  .playerButton,
+  #addButton,
+  #removeButton {
+    width: 100%;
+  }
 
-    #StartEndButtons {
-        bottom: 50px; /* Ajusta a distância do fundo para telas menores */
-    }
+  #StartEndButtons {
+    bottom: 50px; /* Ajusta a distância do fundo para telas menores */
+  }
 }

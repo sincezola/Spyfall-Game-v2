@@ -51,9 +51,15 @@ const placesArray = [
   "Cooperativa",
 ]; // The places array
 
+// Normal Variables
 let place = "";
 let isGameRunning = false;
 let playersAmount = 3;
+
+// Constant Variables
+const bluePlayerButton = [9, 202, 209, 0.808];
+const greyPlayerButton = [23, 25, 26, 0.781];
+const colorPlayerButton = [66, 80, 82, 0.973];
 
 // DOM Navigation -----
 const startButton = document.querySelector("#startButton");
@@ -84,21 +90,25 @@ removeButton.onclick = function () {
 
 startButton.onclick = function () {
   console.log("Game Started");
+  ChangePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
 
   isGameRunning = true; // The game started
+  FixButtons();
 };
 
 endButton.onclick = function () {
-  if (isGameRunning == false) {
-    error("O jogo não está em andamento");
-  } else {
-    console.log("Game Ended");
+  console.log("Game Ended");
 
-    isGameRunning = false; // The game stopped
-  }
+  isGameRunning = false;
+  FixButtons();
 };
 
-function OpenStartModal() {
+// Helper function to convert RGBA arrays to CSS strings
+function rgba(colorArray) {
+  return `rgba(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, ${colorArray[3]})`;
+}
+
+function OpenInfoModal() {
   startModal.showModal();
 }
 
@@ -110,18 +120,53 @@ function ChooseAPlace() {
   return place;
 }
 
-function error(errorMsg) {
-  console.error(errorMsg);
-}
-
 function DisableButton(button) {
   button.disabled = true;
   button.classList.add("disabled");
 }
 
 function AbleButton(button) {
-    button.disabled = true;
-    button.classList.remove("disabled");
+  button.classList.remove("disabled");
+  button.disabled = false;
+}
+
+function FixButtons() {
+  // All of buttons logic
+  if (isGameRunning && startButton.disabled == false)
+    DisableButton(startButton);
+  if (isGameRunning && addButton.disabled == false) DisableButton(addButton);
+  if (isGameRunning && removeButton.disabled == false)
+    DisableButton(removeButton);
+  if (!isGameRunning && endButton.disabled == false) DisableButton(endButton);
+  else {
+    AbleButton(endButton);
+  }
+}
+
+function ChangePlayersButtonColor( // Change the players button color
+  wannaChangeColor,
+  bgColor,
+  color = [255, 255, 255, 0.548]
+) {
+  // Convert document.styleSheets to an array
+  Array.from(document.styleSheets).forEach((sheet) => {
+    try {
+      // Convert sheet.cssRules to an array
+      Array.from(sheet.cssRules).forEach((rule) => {
+        // Check if the rule matches the .playerButton class
+        if (rule.selectorText === ".playerButton") {
+          // Change the desired property
+          rule.style.backgroundColor = rgba(bgColor);
+
+          if (wannaChangeColor) {
+            rule.style.color = rgba(color);
+          }
+        }
+      });
+    } catch (e) {
+      console.warn("Cannot access cssRules for stylesheet:", sheet.href, e);
+    }
+  });
 }
 
 ChooseAPlace();
