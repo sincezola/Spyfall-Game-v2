@@ -1,5 +1,6 @@
 * {
   font-family: "Lato";
+  font-weight: bold;
 }
 
 .lato-regular {
@@ -53,4 +54,20 @@ dialog {
   border-radius: 0.5rem;
   box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
   width: 80%;
+}
+
+#playersButtons {
+  display: grid;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  gap: 3px; /* Espaçamento entre os botões */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.playerButton {
+  background-color: rgba(93, 216, 247, 0.904);
+  border-radius: 5px;
+  padding: 6px;
+  width: 600px;
 }
