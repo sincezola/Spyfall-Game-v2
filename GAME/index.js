@@ -60,6 +60,7 @@ const startButton = document.querySelector("#startButton");
 const endButton = document.querySelector("#endButton");
 const addButton = document.querySelector("#addButton");
 const removeButton = document.querySelector("#removeButton");
+const startModal = document.querySelector("#startModal");
 
 addButton.onclick = function () {
   if (isGameRunning == false) {
@@ -112,6 +113,10 @@ endButton.onclick = function () {
     isGameRunning = false; // The game stopped
   }
 };
+
+function OpenStartModal() {
+  startModal.showModal();
+}
 
 function ChooseAPlace() {
   // When called return a Place

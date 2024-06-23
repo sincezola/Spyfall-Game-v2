@@ -1,41 +1,56 @@
 * {
-    font-family: "Lato";
+  font-family: "Lato";
 }
 
 .lato-regular {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 #AddRemoveButtons {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -30%);
 }
 
 #StartEndButtons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #addButton {
-    background-color: rgb(0, 250, 0);
-    font-size: 1.4em;
-    color: black;
-    border-radius: 6px;
-    padding: 5px 5px; /* Ajusta o espaçamento interno do botão */
-    width: 110px; /* Ajusta a largura do botão */
-    height: 40px; /* Ajusta a altura do botão */
+  background-color: rgb(0, 250, 0);
+  font-size: 1.4em;
+  color: black;
+  border-radius: 6px;
+  padding: 5px 5px; /* Ajusta o espaçamento interno do botão */
+  width: 110px; /* Ajusta a largura do botão */
+  height: 40px; /* Ajusta a altura do botão */
 }
 
 #removeButton {
-    background-color: rgb(250, 54, 54);
-    box-sizing: border-box;
-    font-size: 1.4em;
-    color: black;
-    border-radius: 6px;
-    padding: 5px 5px; /* Ajusta o espaçamento interno do botão */
-    width: 110px; /* Ajusta a largura do botão */
-    height: 40px; /* Ajusta a altura do botão */
+  background-color: rgb(250, 54, 54);
+  box-sizing: border-box;
+  font-size: 1.4em;
+  color: black;
+  border-radius: 6px;
+  padding: 5px 5px; /* Ajusta o espaçamento interno do botão */
+  width: 110px; /* Ajusta a largura do botão */
+  height: 40px; /* Ajusta a altura do botão */
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+dialog {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
+  width: 80%;
 }
