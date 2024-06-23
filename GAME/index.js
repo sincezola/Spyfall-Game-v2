@@ -127,4 +127,4 @@ function error(errorMsg) {
 
 ChooseAPlace();
 
-console.log(`The place choosed is ${place}`); // Show the place
+console.log(`The place choosed is '${place}'`); // Show the place

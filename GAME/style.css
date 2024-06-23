@@ -7,13 +7,35 @@
     font-weight: 400;
     font-style: normal;
 }
-body {
-  display: grid;
+#AddRemoveButtons {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
+#StartEndButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 #addButton {
-    background-color: rgb(87, 230, 87);
-    color: green;
+    background-color: rgb(0, 250, 0);
+    font-size: 1.4em;
+    color: black;
+    border-radius: 6px;
+    padding: 5px 5px; /* Ajusta o espaçamento interno do botão */
+    width: 110px; /* Ajusta a largura do botão */
+    height: 40px; /* Ajusta a altura do botão */
+}
+
+#removeButton {
+    background-color: rgb(250, 54, 54);
+    box-sizing: border-box;
+    font-size: 1.4em;
+    color: black;
+    border-radius: 6px;
+    padding: 5px 5px; /* Ajusta o espaçamento interno do botão */
+    width: 110px; /* Ajusta a largura do botão */
+    height: 40px; /* Ajusta a altura do botão */
 }
