@@ -74,9 +74,7 @@ addButton.onclick = function () {
   playersAmount++; // There is a new player in the game
   console.log(`${playersAmount} Players in the game`);
 
-  if (playersAmount == 20) {
-    DisableButton(addButton);
-  }
+  FixButtons();
 };
 
 removeButton.onclick = function () {
@@ -133,12 +131,18 @@ function FixButtons() {
     if (startButton.disabled == false) DisableButton(startButton);
     if (addButton.disabled == false) DisableButton(addButton);
     if (removeButton.disabled == false) DisableButton(removeButton);
-    if (endButton.disabled == false) DisableButton(endButton);
+    if (endButton.disabled == true) AbleButton(endButton);
   } else {
     AbleButton(startButton);
     AbleButton(addButton);
-    AbleButton(endButton);
+    AbleButton(removeButton);
+    DisableButton(endButton);
   }
+
+  if (playersAmount > 15) DisableButton(addButton);
+  else AbleButton(addButton);
+  if (playersAmount <= 3) DisableButton(removeButton);
+  else AbleButton(removeButton);
 
   // Colors Logics -----
   if (isGameRunning) {

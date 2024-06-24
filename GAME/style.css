@@ -74,25 +74,33 @@ dialog {
   padding: 10px 20px;
 }
 
-#startButton, #addButton {
+#startButton,
+#addButton {
   background-color: rgba(39, 250, 39, 0.808); /* Green */
 }
 
-#startButton:hover, #addButton:hover {
+#startButton:hover,
+#addButton:hover {
   background-color: rgba(34, 199, 34, 0.623); /* Darker green */
 }
 
-#endButton, #removeButton {
+#endButton,
+#removeButton {
   background-color: rgb(230, 41, 41); /* Red */
 }
 
-#endButton:hover, #removeButton:hover {
+#endButton:hover,
+#removeButton:hover {
   background-color: rgba(145, 28, 28, 0.897);
 }
 
-#endButton, #startButton, #addButton, #removeButton, .playerButton {
-    transition: background-color 0.3s ease-in-out;
-    box-shadow: 2px 2px 2px black;
+#endButton,
+#startButton,
+#addButton,
+#removeButton,
+.playerButton {
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 2px black;
 }
 
 /* Change cursor to pointer on hover, if not disabled */
@@ -101,7 +109,7 @@ dialog {
 #addButton:hover:not(:disabled),
 #removeButton:hover:not(:disabled),
 .playerButton:hover:not(:disabled) {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 body {
