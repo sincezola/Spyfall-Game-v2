@@ -8,8 +8,8 @@
 
 #playersButtons {
   display: flex;
-  flex-direction: column; /* Altera a direção para coluna */
-  align-items: center; /* Centraliza os itens na coluna */
+  flex-direction: column; /* Changes direction to column */
+  align-items: center; /* Centers items in the column */
   gap: 8px;
   margin-bottom: 20px;
 }
@@ -19,12 +19,11 @@
   color: rgba(255, 255, 255, 0.493);
   background-color: rgba(23, 25, 26, 0.904);
   border-radius: 5px;
-  padding: 0px 30px; /* Ajusta o padding para espaçamento interno maior */
-  cursor: pointer;
-  width: 100%; /* Ocupa 100% da largura disponível */
-  max-width: 600px; /* Limita a largura máxima */
-  text-align: center; /* Centraliza o texto */
-  height: 40px; /* Aumenta a altura dos botões */
+  padding: 0px 30px; /* Adjusts padding for greater internal spacing */
+  width: 100%; /* Occupies 100% of the available width */
+  max-width: 600px; /* Limits the maximum width */
+  text-align: center; /* Centers the text */
+  height: 40px; /* Increases button height */
 }
 
 #AddRemoveButtons {
@@ -39,9 +38,8 @@
   font-size: 1.4em;
   color: black;
   border-radius: 6px;
-  padding: 7px 20px; /* Ajusta o padding para espaçamento interno maior */
+  padding: 7px 20px; /* Adjusts padding for greater internal spacing */
   margin-top: 15px;
-  cursor: pointer;
 }
 
 dialog::backdrop {
@@ -58,14 +56,14 @@ dialog {
 
 #StartEndButtons {
   position: fixed;
-  bottom: 100px; /* Distância um pouco maior do fundo da tela */
+  bottom: 100px; /* Greater distance from the bottom of the screen */
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding: 10px; /* Espaçamento interno dos botões */
-  z-index: 999; /* Coloca os botões acima de outros elementos */
+  padding: 10px; /* Internal spacing of the buttons */
+  z-index: 999; /* Puts the buttons above other elements */
 }
 
 #startButton,
@@ -74,22 +72,21 @@ dialog {
   color: rgb(0, 0, 0);
   border-radius: 6px;
   padding: 10px 20px;
-  cursor: pointer;
 }
 
 #startButton, #addButton {
-  background-color: rgba(39, 250, 39, 0.808); /* Verde */
+  background-color: rgba(39, 250, 39, 0.808); /* Green */
 }
 
 #startButton:hover, #addButton:hover {
-    background-color: rgba(34, 199, 34, 0.623); /* Verde mais escuro */
+  background-color: rgba(34, 199, 34, 0.623); /* Darker green */
 }
 
 #endButton, #removeButton {
-  background-color: rgb(230, 41, 41); /* Vermelho */
+  background-color: rgb(230, 41, 41); /* Red */
 }
 
-#endButton:hover, #removeButton {
+#endButton:hover, #removeButton:hover {
   background-color: rgba(145, 28, 28, 0.897);
 }
 
@@ -98,10 +95,30 @@ dialog {
     box-shadow: 2px 2px 2px black;
 }
 
+/* Change cursor to pointer on hover, if not disabled */
+#endButton:hover:not(:disabled),
+#startButton:hover:not(:disabled),
+#addButton:hover:not(:disabled),
+#removeButton:hover:not(:disabled),
+.playerButton:hover:not(:disabled) {
+    cursor: pointer;
+}
+
 body {
   background-color: rgba(110, 109, 109, 0.877);
 }
 
+/* Disabled button styles */
+#startButton:disabled,
+#endButton:disabled,
+#addButton:disabled,
+#removeButton:disabled,
+.playerButton:disabled {
+  pointer-events: none; /* Disable interactions */
+  opacity: 0.6; /* Dim the button to indicate it's disabled */
+}
+
+/* Media query for responsive design */
 @media (max-width: 768px) {
   #playersButtons,
   #AddRemoveButtons {
@@ -116,6 +133,6 @@ body {
   }
 
   #StartEndButtons {
-    bottom: 50px; /* Ajusta a distância do fundo para telas menores */
+    bottom: 50px; /* Adjust the distance from the bottom for smaller screens */
   }
 }
