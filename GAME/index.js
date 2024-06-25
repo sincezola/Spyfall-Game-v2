@@ -52,14 +52,14 @@ const placesArray = [
 ]; // The places array
 
 // Normal Variables
-let place = "";
-let isGameRunning = false;
-let playersAmount = 3;
+var place = "";
+var isGameRunning = false;
+var playersAmount = 3;
 
 // Constant Variables
 const bluePlayerButton = [9, 202, 209, 0.808];
 const greyPlayerButton = [23, 25, 26, 0.781];
-const colorPlayerButton = [66, 80, 82, 0.973];
+const colorPlayerButton = [173, 78, 78, 0.877];
 
 // DOM Navigation -----
 const startButton = document.querySelector("#startButton");
@@ -67,13 +67,15 @@ const endButton = document.querySelector("#endButton");
 const addButton = document.querySelector("#addButton");
 const removeButton = document.querySelector("#removeButton");
 const startModal = document.querySelector("#startModal");
+const playersButtonContainer = document.querySelector("#playersButtons");
 
 FixButtons(); // Prepare the buttons
 
 addButton.onclick = function () {
-  playersAmount++; // There is a new player in the game
-  console.log(`${playersAmount} Players in the game`);
+  AddOrRemoveAPlayer(); // There is a new player in the game
+  playersAmount++;
 
+  console.log(`${playersAmount} Players in the game`);
   FixButtons();
 };
 
@@ -82,6 +84,7 @@ removeButton.onclick = function () {
   console.log(`${playersAmount} Players in the game`);
 
   FixButtons();
+  AddOrRemoveAPlayer(true);
 };
 
 startButton.onclick = function () {
@@ -125,6 +128,27 @@ function AbleButton(button) {
   button.disabled = false;
 }
 
+function AddOrRemoveAPlayer(remove = false) {
+  if (!remove) {
+    // Adding a player
+    var button = document.createElement("button");
+
+    button.classList.add("playerButton");
+    playersButtonContainer.appendChild(button);
+    console.log(
+      "Botão foi criado com sucesso!"
+    );
+  } else {
+    // Removing a player
+    var buttons = playersButtonContainer.getElementsByClassName("playerButton");
+    playersButtonContainer.removeChild(buttons[buttons.length - 1]);
+    console.log("Último botão foi removido com sucesso!");
+  }
+
+  console.log(playersAmount);
+  button.textContent = `Jogador ${playersAmount + 1}`;
+}
+
 function FixButtons() {
   // All of buttons logic
   if (isGameRunning) {
@@ -139,7 +163,7 @@ function FixButtons() {
     DisableButton(endButton);
   }
 
-  if (playersAmount > 15) DisableButton(addButton);
+  if (playersAmount > 13) DisableButton(addButton);
   else AbleButton(addButton);
   if (playersAmount <= 3) DisableButton(removeButton);
   else AbleButton(removeButton);
@@ -150,6 +174,8 @@ function FixButtons() {
   } else {
     ChangePlayersButtonColor(false, greyPlayerButton);
   }
+
+  // Players Buttons -----
 }
 
 function ChangePlayersButtonColor( // Change the players button color
@@ -180,4 +206,4 @@ function ChangePlayersButtonColor( // Change the players button color
 
 ChooseAPlace();
 
-console.log(`The place choosed is '${place}'`); // Show the place
+console.log(`--------------- The place choosed is '${place}' ---------------`); // Show the place
