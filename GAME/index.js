@@ -131,42 +131,35 @@ function AbleButton(button) {
 function AddOrRemoveAPlayer(remove = false) {
   if (!remove) {
     // Adding a player
-    var button = document.createElement("button");
+    let button = document.createElement("button");
 
     button.classList.add("playerButton");
+    button.textContent = `Jogador ${playersAmount + 1}`;
     playersButtonContainer.appendChild(button);
-    console.log(
-      "Botão foi criado com sucesso!"
-    );
+    console.log("Botão foi criado com sucesso!");
   } else {
     // Removing a player
     var buttons = playersButtonContainer.getElementsByClassName("playerButton");
     playersButtonContainer.removeChild(buttons[buttons.length - 1]);
     console.log("Último botão foi removido com sucesso!");
   }
-
-  console.log(playersAmount);
-  button.textContent = `Jogador ${playersAmount + 1}`;
 }
 
 function FixButtons() {
   // All of buttons logic
   if (isGameRunning) {
-    if (startButton.disabled == false) DisableButton(startButton);
-    if (addButton.disabled == false) DisableButton(addButton);
-    if (removeButton.disabled == false) DisableButton(removeButton);
-    if (endButton.disabled == true) AbleButton(endButton);
+    if (!startButton.disabled) DisableButton(startButton);
+    if (!addButton.disabled) DisableButton(addButton);
+    if (!removeButton.disabled) DisableButton(removeButton);
+    if (endButton.disabled) AbleButton(endButton);
   } else {
     AbleButton(startButton);
-    AbleButton(addButton);
-    AbleButton(removeButton);
+    if (playersAmount > 13) DisableButton(addButton);
+    else AbleButton(addButton);
+    if (playersAmount <= 3) DisableButton(removeButton);
+    else AbleButton(removeButton);
     DisableButton(endButton);
   }
-
-  if (playersAmount > 13) DisableButton(addButton);
-  else AbleButton(addButton);
-  if (playersAmount <= 3) DisableButton(removeButton);
-  else AbleButton(removeButton);
 
   // Colors Logics -----
   if (isGameRunning) {
@@ -206,4 +199,4 @@ function ChangePlayersButtonColor( // Change the players button color
 
 ChooseAPlace();
 
-console.log(`--------------- The place choosed is '${place}' ---------------`); // Show the place
+console.log(`-------- The place choosed is '${place}' --------`); // Show the place
