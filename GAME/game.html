@@ -15,25 +15,33 @@
 
 </head>
 <body>
-    <div id="AddRemoveButtons">
-        <button id="addButton">Adicionar</button>
-        <button id="removeButton">Remover</button>
-    </div>
+    <header>
+        <div id="AddRemoveButtons">
+            <button id="addButton">Adicionar</button>
+            <button id="removeButton">Remover</button>
+        </div>
+    </header>
 
-    <div id="playersButtons">
-        <button class="playerButton">Jogador 1</button>
-        <button class="playerButton">Jogador 2</button>
-        <button class="playerButton">Jogador 3</button>
-    </div>
+    <main>
+        <section id="playersSection">
+            <div id="playersButtons">
+                <button class="playerButton">Jogador 1</button>
+                <button class="playerButton">Jogador 2</button>
+                <button class="playerButton">Jogador 3</button>
+            </div>
+        </section>
 
-    <div id="StartEndButtons">
-        <button id="startButton">Começar</button>
-        <button id="endButton">Terminar Jogo</button>
-    </div>
+        <section id="gameControlSection">
+            <div id="StartEndButtons">
+                <button id="startButton">Começar</button>
+                <button id="endButton">Terminar Jogo</button>
+            </div>
+        </section>
 
-    <dialog id="startModal">
-        <h2>Sua rodada iniciará em breve!</h2>
-    </dialog>
+        <dialog id="startModal">
+            <h2>Sua rodada iniciará em breve!</h2>
+        </dialog>
+    </main>
 
     <script src="index.js"></script>
 </body>
