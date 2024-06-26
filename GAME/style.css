@@ -114,7 +114,6 @@ dialog {
 
 body {
   background-color: rgba(110, 109, 109, 0.877);
-
 }
 
 /* Disabled button styles */
@@ -129,16 +128,18 @@ body {
 
 /* Media query for responsive design */
 @media (max-width: 768px) {
-  #playersButtons,
-  #AddRemoveButtons {
+  #playersButtons {
     flex-direction: column;
     align-items: center;
   }
 
-  .playerButton,
+  .playerButton {
+    width: 90%;
+  }
+
   #addButton,
   #removeButton {
-    width: 100%;
+    width: 30%;
   }
 
   #StartEndButtons {
