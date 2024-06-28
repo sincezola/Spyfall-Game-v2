@@ -1,60 +1,12 @@
-const placesArray = [
-  "Hospital",
-  "Escola",
-  "Universidade",
-  "Tribunal",
-  "Estação de Metrô",
-  "Museu",
-  "Biblioteca",
-  "Escola Municipal",
-  "Delegacia de Polícia",
-  "Agência dos Correios",
-  "Banco",
-  "Santuário",
-  "Parque",
-  "Aeroporto",
-  "Rodoviária",
-  "Shopping Center",
-  "Clínica",
-  "Embaixada",
-  "Câmara Municipal",
-  "Prefeitura",
-  "Tribunal Eleitoral",
-  "Teatro",
-  "Fundação",
-  "Centro Cultural",
-  "Supermercado",
-  "Estádio",
-  "Praça",
-  "Instituto",
-  "Ministério",
-  "Fórum",
-  "Receita Federal",
-  "Faculdade",
-  "Jardim Botânico",
-  "Zoológico",
-  "Escola Técnica",
-  "Senado",
-  "Comunidade",
-  "INSS",
-  "Centro Comercial",
-  "Centro de Convenções",
-  "Subprefeitura",
-  "Associação",
-  "Academia de Ginástica",
-  "Agência de Turismo",
-  "Auditório",
-  "Hospital Psiquiátrico",
-  "Centro Esportivo",
-  "Cineclube",
-  "Conservatório de Música",
-  "Cooperativa",
-]; // The places array
+/* prettier-ignore-start */
+import locals from "./modules/locals.json" with { type: "json" };
+
+console.log(locals);
 
 // Normal Variables
-var place = "";
-var isGameRunning = false;
-var playersAmount = 3;
+let place = "";
+let isGameRunning = false;
+let playersAmount = 3;
 
 // Constant Variables
 const bluePlayerButton = [9, 202, 209, 0.808];
@@ -67,38 +19,40 @@ const endButton = document.querySelector("#endButton");
 const addButton = document.querySelector("#addButton");
 const removeButton = document.querySelector("#removeButton");
 const startModal = document.querySelector("#startModal");
-const playersButtonContainer = document.querySelector("#playersButtons");
+const playersButtonContainer = document.querySelector(
+  "#playersButtonContainer"
+);
 
-FixButtons(); // Prepare the buttons
+fixButtons(); // Prepare the buttons
 
 addButton.onclick = function () {
-  AddOrRemoveAPlayer(); // There is a new player in the game
+  addOrRemoveAPlayer(); // There is a new player in the game
   playersAmount++;
 
   console.log(`${playersAmount} Players in the game`);
-  FixButtons();
+  fixButtons();
 };
 
 removeButton.onclick = function () {
   playersAmount--;
   console.log(`${playersAmount} Players in the game`);
 
-  FixButtons();
-  AddOrRemoveAPlayer(true);
+  fixButtons();
+  addOrRemoveAPlayer(true);
 };
 
 startButton.onclick = function () {
   console.log("Game Started");
 
   isGameRunning = true; // The game started
-  FixButtons();
+  fixButtons();
 };
 
 endButton.onclick = function () {
   console.log("Game Ended");
 
   isGameRunning = false;
-  FixButtons();
+  fixButtons();
 };
 
 // Helper function to convert RGBA arrays to CSS strings
@@ -106,29 +60,29 @@ function rgba(colorArray) {
   return `rgba(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, ${colorArray[3]})`;
 }
 
-function OpenInfoModal() {
+function openInfoModal() {
   startModal.showModal();
 }
 
-function ChooseAPlace() {
+function chooseAPlace() {
   // When called return a Place
   let randomIndexNumber = Math.floor(Math.random() * 50);
-  place = placesArray[randomIndexNumber];
+  place = locals[randomIndexNumber];
 
   return place;
 }
 
-function DisableButton(button) {
+function disableButton(button) {
   button.disabled = true;
   button.classList.add("disabled");
 }
 
-function AbleButton(button) {
+function ableButton(button) {
   button.classList.remove("disabled");
   button.disabled = false;
 }
 
-function AddOrRemoveAPlayer(remove = false) {
+function addOrRemoveAPlayer(remove = false) {
   if (!remove) {
     // Adding a player
     let button = document.createElement("button");
@@ -139,39 +93,38 @@ function AddOrRemoveAPlayer(remove = false) {
     console.log("Botão foi criado com sucesso!");
   } else {
     // Removing a player
-    var buttons = playersButtonContainer.getElementsByClassName("playerButton");
+    let buttons = playersButtonContainer.getElementsByClassName("playerButton");
     playersButtonContainer.removeChild(buttons[buttons.length - 1]);
     console.log("Último botão foi removido com sucesso!");
   }
 }
-
-function FixButtons() {
+function fixButtons() {
   // All of buttons logic
   if (isGameRunning) {
-    if (!startButton.disabled) DisableButton(startButton);
-    if (!addButton.disabled) DisableButton(addButton);
-    if (!removeButton.disabled) DisableButton(removeButton);
-    if (endButton.disabled) AbleButton(endButton);
+    if (!startButton.disabled) disableButton(startButton);
+    if (!addButton.disabled) disableButton(addButton);
+    if (!removeButton.disabled) disableButton(removeButton);
+    if (endButton.disabled) ableButton(endButton);
   } else {
-    AbleButton(startButton);
-    if (playersAmount > 13) DisableButton(addButton);
-    else AbleButton(addButton);
-    if (playersAmount <= 3) DisableButton(removeButton);
-    else AbleButton(removeButton);
-    DisableButton(endButton);
+      ableButton(startButton);
+      if (playersAmount > 13) disableButton(addButton);
+      else ableButton(addButton);
+      if (playersAmount <= 3) disableButton(removeButton);
+      else ableButton(removeButton);
+      disableButton(endButton);
   }
 
-  // Colors Logics -----
-  if (isGameRunning) {
-    ChangePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
-  } else {
-    ChangePlayersButtonColor(false, greyPlayerButton);
-  }
+    // Colors Logics -----
+    if (isGameRunning) {
+      changePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
+    } else {
+      changePlayersButtonColor(false, greyPlayerButton);
+    }
 
-  // Players Buttons -----
+    // Players Buttons -----
 }
 
-function ChangePlayersButtonColor( // Change the players button color
+function changePlayersButtonColor( // Change the players button color
   wannaChangeColor,
   bgColor,
   color = [255, 255, 255, 0.548]
@@ -197,6 +150,6 @@ function ChangePlayersButtonColor( // Change the players button color
   });
 }
 
-ChooseAPlace();
+chooseAPlace();
 
 console.log(`-------- The place choosed is '${place}' --------`); // Show the place

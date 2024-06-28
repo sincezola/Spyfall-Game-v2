@@ -15,16 +15,16 @@
 
 </head>
 <body>
-    <header>
-        <div id="AddRemoveButtons">
-            <button id="addButton">Adicionar</button>
-            <button id="removeButton">Remover</button>
-        </div>
-    </header>
-
     <main>
+        <section id="manageSection">
+            <div id="AddRemoveButtons">
+                <button id="addButton">Adicionar</button>
+                <button id="removeButton">Remover</button>
+            </div>
+        </section>
+
         <section id="playersSection">
-            <div id="playersButtons">
+            <div id="playersButtonContainer">
                 <button class="playerButton">Jogador 1</button>
                 <button class="playerButton">Jogador 2</button>
                 <button class="playerButton">Jogador 3</button>
@@ -43,6 +43,6 @@
         </dialog>
     </main>
 
-    <script src="index.js"></script>
+    <script src="index.js" type="module"></script>
 </body>
 </html>
