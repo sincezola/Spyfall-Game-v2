@@ -50,5 +50,3 @@ locals = [
   "Conservatório de Música",
   "Cooperativa"
 ];
-
-export default locals

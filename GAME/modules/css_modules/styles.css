@@ -37,6 +37,10 @@ main > section {
   margin-top: 2rem; /* Example top margin for spacing */
 }
 
+#spiesText {
+  font-size: large;
+}
+
 /* Styles for .localsSpyAmountButtons */
 .localsSpyAmountButtons {
   display: flex;
@@ -123,8 +127,7 @@ main > section {
 /* Styles for Start/End Buttons Container */
 #StartEndButtons {
   display: flex;
-  gap: 2vh; /* Vertical gap between buttons */
-  padding: 10px; /* Padding inside buttons */
+  padding: 8px; /* Padding inside buttons */
   z-index: 999; /* Place buttons above other elements */
 }
 
@@ -191,7 +194,7 @@ main > section {
 }
 
 /* Media Query for responsiveness on mobile devices */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 930px) {
   .localsSpyAmountButtons {
     width: 80%; /* Reduce width for smaller screens */
     flex-wrap: wrap; /* Allow items to wrap as needed */
@@ -202,7 +205,7 @@ main > section {
   .localsSpyAmountButtons label {
     margin-left: 0.5rem; /* Smaller margin for labels */
   }
-
+  
   /* Adjust spy images for smaller screens */
   .spyImage {
     width: 2.8vh; /* Larger image size for smaller screens */

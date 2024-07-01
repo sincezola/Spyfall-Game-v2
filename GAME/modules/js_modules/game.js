@@ -2,7 +2,6 @@
 
 import { fixButtons } from "./ui.js"
 import { addOrRemoveAPlayer } from "./players.js"
-import { locals } from "./locals.js"
 
 let place = "";
 let isGameRunning = false;
@@ -14,10 +13,8 @@ const colorPlayerButton = [173, 78, 78, 0.877];
 
 const startButton = document.querySelector("#startButton");
 const endButton = document.querySelector("#endButton");
-const addButton = document.querySelectorE("#addButton");
+const addButton = document.querySelector("#addButton");
 const removeButton = document.querySelector("#removeButton");
-const startModal = document.querySelector("#startModal");
-const playersButtonContainer = document.querySelector("#playersButtonContainer");
 
 fixButtons();
 
