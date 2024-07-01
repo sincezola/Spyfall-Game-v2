@@ -9,7 +9,9 @@ import {
   startButton,
   endButton,
   addButton,
-  removeButton
+  removeButton,
+  basicButtonsLogicsGameRunning,
+  basicButtonsLogicsGameIsntRunning
 } from "./game.js";
 
 // Selecting DOM elements
@@ -41,19 +43,25 @@ function enableButton(button) {
 
 // Event listener for the second spy choice radio button
 secondSpyChoice.addEventListener("change", () => {
-  // Disables start button if second spy choice is checked and playersAmount is less than 4
-  if (secondSpyChoice.checked && playersAmount < 4) {
-    disableButton(startButton);
-  }
+  spyChoicesLogic(false);
 });
 
 // Event listener for the first spy choice radio button
 firstSpyChoice.addEventListener("change", () => {
-  // Enables start button if it's disabled and playersAmount is less than 4
-  if (startButton.disabled == true && playersAmount < 4) {
-    enableButton(startButton);
-  }
+  spyChoicesLogic(true);
 });
+
+function spyChoicesLogic(isFirst) {
+  if (isFirst) {
+    if (startButton.disabled == true && playersAmount < 4) {   // Enables start button if it's disabled and playersAmount is less than 4
+      enableButton(startButton);
+    }
+  } else {
+    if (secondSpyChoice.checked && playersAmount < 4) {   // Disables start button if second spy choice is checked and playersAmount is less than 4
+      disableButton(startButton);
+    }
+  }
+}
 
 closeModalButton.onclick = () => infoModal.close();
 
@@ -66,35 +74,25 @@ function fixButtons() {
   const playerButton = document.querySelectorAll(".playerButton"); // Dynamically adding buttons to class playerButton
 
   if (isGameRunning) {
-    // Disables buttons if game is running
-    if (!startButton.disabled) disableButton(startButton);
-    if (!addButton.disabled) disableButton(addButton);
-    if (!removeButton.disabled) disableButton(removeButton);
-    if (endButton.disabled) enableButton(endButton);
+    // Change buttons state if game is running
+    basicButtonsLogics();
+    changePlayersButtonColor(true, bluePlayerButton, colorPlayerButton); // Changes color of player buttons if specified
 
-    // Changes color of player buttons if specified
-    changePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
-
-    // Enable all the players buttons if the game is running
-    playerButton.forEach(button => {
+    playerButton.forEach(button => { // Enable all the players buttons if the game is running
       enableButton(button);
     });
   } else {
-    // Game is not running
-    enableButton(startButton);
-    if (playersAmount > 13) disableButton(addButton);
-    else enableButton(addButton);
-    if (playersAmount <= 3) disableButton(removeButton);
-    else enableButton(removeButton);
-    disableButton(endButton);
+    // Change buttons state if game is not running
+    basicButtonsLogicGameIsntRunning();
+    changePlayersButtonColor(false, greyPlayerButton); // Changes color of player buttons if specified
 
-    // Disable all the players buttons if the game is not running
-    playerButton.forEach(button => {
+    playerButton.forEach(button => { // Disable all the players buttons if the game is not running
       disableButton(button);
     });
 
-    // Changes color of player buttons if specified
-    changePlayersButtonColor(false, greyPlayerButton);
+    // Spies choices logic ------
+    spyChoicesLogic(true);
+    spyChoicesLogic(false);
   }
 }
 
@@ -124,5 +122,5 @@ function openModal(event) {
   fixButtons();
 }
 
-// Exporting functions for external use
+// Exporting Functions --------
 export { fixButtons, changePlayersButtonColor };

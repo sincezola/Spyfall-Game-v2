@@ -3,9 +3,10 @@
 import { fixButtons } from "./ui.js"
 import { playersAmount } from "./game.js"
 
+// DOM Navigation -----
 const playersButtonContainer = document.querySelector("#playersButtonContainer");
 
-function addOrRemoveAPlayer(remove = false) {
+function addOrRemoveAPlayer(remove = false) { // Function to add or remove a player
   if (!remove) {
     let button = document.createElement("button");
     button.classList.add("playerButton");
@@ -21,4 +22,5 @@ function addOrRemoveAPlayer(remove = false) {
   fixButtons();
 }
 
+// Exporting Functions --------
 export { addOrRemoveAPlayer };
