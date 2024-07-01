@@ -1,4 +1,4 @@
-[
+locals = [
   "Hospital",
   "Escola",
   "Universidade",
@@ -49,4 +49,6 @@
   "Cineclube",
   "Conservatório de Música",
   "Cooperativa"
-]
+];
+
+export default locals

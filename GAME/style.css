@@ -1,5 +1,5 @@
 * {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -59,6 +59,8 @@ main > section {
   overflow-y: auto; /* Enables vertical scrolling if necessary */
   border-radius: 0.8rem; /* Rounded corners */
   filter: blur(0.3px); /* Blur effect */
+  border: solid transparent;
+  outline: 2px solid rgba(124, 121, 121, 0.5); /* Efeito de blur */
 }
 
 .playerButton {
@@ -93,7 +95,7 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5); /* Dark backdrop for modal dialogs */
 }
 
-dialog {
+dialog { /* Modal */
   border: none;
   border-radius: 0.5rem; /* Rounded corners */
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.3); /* Shadow effect */
@@ -101,13 +103,16 @@ dialog {
   padding: 20px; /* Internal padding */
 }
 
+#localsSpyAmountButtons {
+  display: flex;
+  gap: 2vh;
+  
+}
+
 #StartEndButtons {
   /* Container for start and end buttons */
-  bottom: 100px; /* Distance from the bottom of the screen */
-  left: 0;
-  right: 0;
   display: flex;
-  gap: 1vh; /* Vertical gap between buttons */
+  gap: 2vh; /* Vertical gap between buttons */
   padding: 10px; /* Internal spacing of the buttons */
   z-index: 999; /* Puts the buttons above other elements */
 }
@@ -124,22 +129,22 @@ dialog {
 
 #startButton,
 #addButton {
-  background-color: rgba(39, 250, 39, 0.808); /* Green */
+  background-color: #38E238; /* Green */
 }
 
 #startButton:hover,
 #addButton:hover {
-  background-color: rgba(34, 199, 34, 0.623); /* Darker green on hover */
+  background-color: #45AB44; /* Darker green on hover */
 }
 
 #endButton,
 #removeButton {
-  background-color: rgb(230, 41, 41); /* Red */
+  background-color: #E62929; /* Red */
 }
 
 #endButton:hover,
 #removeButton:hover {
-  background-color: rgba(145, 28, 28, 0.897); /* Darker red on hover */
+  background-color: #8F2626; /* Darker red on hover */
 }
 
 #endButton,
@@ -173,3 +178,4 @@ body {
   pointer-events: none; /* Disable interactions */
   opacity: 0.6; /* Dim the button to indicate it's disabled */
 }
+

@@ -1,0 +1,17 @@
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Dark backdrop for modal dialogs */
+}
+
+dialog {
+  border: none;
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3); /* Shadow effect */
+  width: 80%;
+  padding: 20px; /* Internal padding */
+}
+
+/* Locals Spy Amount Buttons */
+#localsSpyAmountButtons {
+  display: flex;
+  gap: 2vh;
+}

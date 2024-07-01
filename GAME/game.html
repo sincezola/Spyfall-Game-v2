@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpyFall</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="bin/spyfav.ico" type="image/x-icon">
+    <!-- Importing the CSS's -->
+    <link rel="stylesheet" href="./modules/css_modules/styles.css">
+    <link rel="stylesheet" href="./modules/css_modules/scrollbar.css">
+    <link rel="stylesheet" href="./modules/css_modules/dialog.css">
+
+    <!-- The spy favicon -->
+    <link rel="shortcut icon" href="bin/spyFav.ico" type="image/x-icon">
 
     <!-- Installing the "Loto" font with GoogleFonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,29 +23,44 @@
     <main>
         <section id="manageSection">
             <div id="AddRemoveButtons">
-                <button id="addButton">Adicionar</button>
-                <button id="removeButton">Remover</button>
+                <button id="addButton">Adicionar</button> <!-- Add Button -->
+                <button id="removeButton">Remover</button> <!-- Remove Button -->
             </div>
         </section>
 
         <section id="playersSection">
             <div id="playersButtonContainer">
+                <!-- Players Buttons -->
                 <button class="playerButton">Jogador 1</button>
                 <button class="playerButton">Jogador 2</button>
                 <button class="playerButton">Jogador 3</button>
             </div>
         </section>
 
-        <section id="gameControlSection">
-            <div id="StartEndButtons">
-                <button id="startButton">Começar</button>
-                <button id="endButton">Terminar Jogo</button>
+        <section id="configsSection">
+            <div class="localsSpyAmountButtons">
+                <label>
+                    <!-- 1 Spy option -->    
+                    <input type="radio" name="option" value="option1">
+                    <img class="spyImage" src="./bin/spyImage.png" alt="SpyImage">
+                </label>
+                <label>
+                    <!-- 2 Spies option -->
+                    <input type="radio" name="option" value="option2">
+                    <img class="spyImage" src="./bin/spyImage.png" alt="SpyImage">
+                    <img class="spyImage" src="./bin/spyImage.png" alt="SpyImage">
+                </label>
             </div>
         </section>
 
-        <dialog id="startModal">
-            <h2>Sua rodada iniciará em breve!</h2>
-        </dialog>
+        <section id="gameControlSection"> <!-- Start and End buttons div-->
+            <div id="StartEndButtons">
+                <button id="startButton">Começar</button> <!-- Start button-->
+                <button id="endButton">Terminar Jogo</button> <!-- End button-->
+            </div>
+        </section>
+
+        <dialog id="startModal"></dialog> <!-- Locals Modal -->
     </main>
 
     <!-- Importing modules -->

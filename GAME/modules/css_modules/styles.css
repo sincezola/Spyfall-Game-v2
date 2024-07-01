@@ -1,0 +1,211 @@
+/* General Styles */
+* {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(110, 109, 109, 0.877); /* Background color */
+}
+
+main {
+  /* Wraps the entire Main */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  height: 100vh; /* Full height of the viewport */
+}
+
+main > section {
+  /* Centers content inside the main section */
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for #configsSection */
+#configsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem; /* Example top margin for spacing */
+}
+
+/* Styles for .localsSpyAmountButtons */
+.localsSpyAmountButtons {
+  display: flex;
+  gap: 10vh; /* Gap between items */
+  border: solid;
+  border-radius: 8px;
+  border-color: rgb(100, 99, 99);
+  flex-direction: row;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 40%; /* Initial width */
+  height: 30%;
+  margin-top: 1rem; /* Top margin for spacing */
+  box-shadow: 3px 3px 3px rgb(51, 46, 46);
+}
+
+/* Styles for labels inside .localsSpyAmountButtons */
+.localsSpyAmountButtons label {
+  display: flex;
+  align-items: center; /* Align content vertically */
+  margin-left: 3rem; /* Adjust right margin as needed */
+}
+
+/* Styles for radio inputs inside .localsSpyAmountButtons */
+.localsSpyAmountButtons input[type='radio'] {
+  margin-right: 0.5rem; /* Adjust right margin as needed */
+}
+
+/* Styles for spy images */
+.spyImage {
+  width: 3vh; /* Adjust image size */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 13px; /* Right margin */
+}
+
+/* Styles for buttons */
+#addButton,
+#removeButton,
+#startButton,
+#endButton {
+  font-size: 1.6em; /* Button text size */
+  padding: 10px 30px; /* Padding inside buttons */
+  margin: 0 1rem; /* Adjust margins as needed */
+}
+
+/* Styles for #playersButtonContainer */
+#playersButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem; /* Gap between items */
+  padding-top: 0.4rem; /* Top padding */
+  background-color: rgb(64, 71, 71);
+  box-shadow: 3px 3px 3px rgb(51, 46, 46);
+  min-width: 35vh; /* Minimum width */
+  width: 50%; /* 50% of viewport width */
+  max-width: 100vw; /* Maximum width */
+  height: 30vh; /* Fixed height */
+  overflow-y: auto; /* Vertical scrolling if necessary */
+  border-radius: 0.8rem; /* Rounded corners */
+  filter: blur(0.3px); /* Blur effect */
+  outline: 2px solid rgba(124, 121, 121, 0.5); /* Blur effect */
+}
+
+/* Styles for player buttons */
+.playerButton {
+  font-size: 1.2em; /* Button text size */
+  color: rgba(255, 255, 255, 0.493); /* Text color */
+  background-color: rgba(23, 25, 26, 0.904); /* Background color */
+  border-radius: 5px; /* Rounded corners */
+  width: 80%; /* 80% of available width */
+  max-width: 600px; /* Maximum width */
+  text-align: center; /* Center text */
+  height: 40px; /* Fixed height */
+  min-height: 40px; /* Minimum height */
+}
+
+/* Styles for Add/Remove Buttons Container */
+#AddRemoveButtons {
+  display: flex;
+  gap: 1vh; /* Vertical gap between buttons */
+}
+
+/* Styles for Start/End Buttons Container */
+#StartEndButtons {
+  display: flex;
+  gap: 2vh; /* Vertical gap between buttons */
+  padding: 10px; /* Padding inside buttons */
+  z-index: 999; /* Place buttons above other elements */
+}
+
+/* Individual Button Styles */
+#addButton,
+#removeButton,
+#startButton,
+#endButton {
+  font-size: 1.4em; /* Button text size */
+  color: black; /* Text color */
+  border-radius: 6px; /* Rounded corners */
+  padding: 5px 20px; /* Padding inside buttons */
+  width: 20vh; /* Fixed width */
+}
+
+/* Button Colors and Hover Effects */
+#addButton,
+#startButton {
+  background-color: #38e238; /* Green */
+}
+
+#addButton:hover,
+#startButton:hover {
+  background-color: #45ab44; /* Darker green on hover */
+}
+
+#removeButton,
+#endButton {
+  background-color: #e62929; /* Red */
+}
+
+#removeButton:hover,
+#endButton:hover {
+  background-color: #8f2626; /* Darker red on hover */
+}
+
+/* Button Hover Transition */
+#startButton,
+#endButton,
+#addButton,
+#removeButton,
+.playerButton {
+  transition: background-color 0.3s ease-in-out; /* Smooth color transition */
+  box-shadow: 2px 2px 2px black; /* Shadow effect */
+}
+
+/* Change cursor to pointer on hover if not disabled */
+#endButton:hover:not(:disabled),
+#startButton:hover:not(:disabled),
+#addButton:hover:not(:disabled),
+#removeButton:hover:not(:disabled),
+.playerButton:hover:not(:disabled) {
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Disabled Button Styles */
+#startButton:disabled,
+#endButton:disabled,
+#addButton:disabled,
+#removeButton:disabled,
+.playerButton:disabled {
+  pointer-events: none; /* Disable interactions */
+  opacity: 0.6; /* Dim the button to indicate disabled state */
+}
+
+/* Media Query for responsiveness on mobile devices */
+@media screen and (max-width: 768px) {
+  .localsSpyAmountButtons {
+    width: 80%; /* Reduce width for smaller screens */
+    flex-wrap: wrap; /* Allow items to wrap as needed */
+    gap: 5vh; /* Reduce gap between items */
+  }
+
+  /* Adjust labels for smaller screens */
+  .localsSpyAmountButtons label {
+    margin-left: 0.5rem; /* Smaller margin for labels */
+  }
+
+  /* Adjust spy images for smaller screens */
+  .spyImage {
+    width: 2.8vh; /* Larger image size for smaller screens */
+    margin-right: 8px; /* Smaller margin for images */
+  }
+}

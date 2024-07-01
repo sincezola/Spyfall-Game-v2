@@ -1,7 +1,7 @@
 // players.js
 
-import { fixButtons } from "./ui.js";
-import { playersAmount } from "./game.js";
+import { fixButtons } from "./ui.js"
+import { playersAmount } from "./game.js"
 
 const playersButtonContainer = document.querySelector("#playersButtonContainer");
 
