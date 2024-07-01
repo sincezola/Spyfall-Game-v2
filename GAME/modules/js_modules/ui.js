@@ -13,9 +13,10 @@ import {
 } from "./game.js";
 
 // Selecting DOM elements
-const startModal = document.querySelector("#startModal");
+const closeModalButton = document.querySelector("#closeModalButton");
 const secondSpyChoice = document.querySelector("#secondSpyChoice");
 const firstSpyChoice = document.querySelector("#firstSpyChoice");
+const infoModal = document.querySelector("#infoModal");
 
 // Function to open the info modal
 function openInfoModal() {
@@ -23,22 +24,26 @@ function openInfoModal() {
 }
 
 // Function to disable a button
-function disenableButton(button) {
-  button.disabled = true;
-  button.classList.add("disabled");
+function disableButton(button) {
+  if (button) {
+    button.disabled = true;
+    button.classList.add("disabled");
+  }
 }
 
 // Function to enable a button
 function enableButton(button) {
-  button.classList.remove("disabled");
-  button.disabled = false;
+  if (button) {
+    button.classList.remove("disabled");
+    button.disabled = false;
+  }
 }
 
 // Event listener for the second spy choice radio button
 secondSpyChoice.addEventListener("change", () => {
   // Disables start button if second spy choice is checked and playersAmount is less than 4
   if (secondSpyChoice.checked && playersAmount < 4) {
-    disenableButton(startButton);
+    disableButton(startButton);
   }
 });
 
@@ -50,25 +55,43 @@ firstSpyChoice.addEventListener("change", () => {
   }
 });
 
+closeModalButton.onclick = () => infoModal.close();
+
+document.querySelectorAll('.playerButton').forEach(button => {
+  button.addEventListener('click', openModal);
+});
+
 // Function to adjust button states based on game running status
 function fixButtons() {
+  const playerButton = document.querySelectorAll(".playerButton"); // Dynamically adding buttons to class playerButton
+
   if (isGameRunning) {
     // Disables buttons if game is running
-    if (!startButton.disabled) disenableButton(startButton);
-    if (!addButton.disabled) disenableButton(addButton);
-    if (!removeButton.disabled) disenableButton(removeButton);
+    if (!startButton.disabled) disableButton(startButton);
+    if (!addButton.disabled) disableButton(addButton);
+    if (!removeButton.disabled) disableButton(removeButton);
     if (endButton.disabled) enableButton(endButton);
 
     // Changes color of player buttons if specified
     changePlayersButtonColor(true, bluePlayerButton, colorPlayerButton);
+
+    // Enable all the players buttons if the game is running
+    playerButton.forEach(button => {
+      enableButton(button);
+    });
   } else {
-    // Enables/disables buttons based on player amount
+    // Game is not running
     enableButton(startButton);
-    if (playersAmount > 13) disenableButton(addButton);
+    if (playersAmount > 13) disableButton(addButton);
     else enableButton(addButton);
-    if (playersAmount <= 3) disenableButton(removeButton);
+    if (playersAmount <= 3) disableButton(removeButton);
     else enableButton(removeButton);
-    disenableButton(endButton);
+    disableButton(endButton);
+
+    // Disable all the players buttons if the game is not running
+    playerButton.forEach(button => {
+      disableButton(button);
+    });
 
     // Changes color of player buttons if specified
     changePlayersButtonColor(false, greyPlayerButton);
@@ -87,10 +110,18 @@ function changePlayersButtonColor(wannaChangeColor, bgColor, color = [255, 255, 
           }
         }
       });
-    } catch (e) {
+    } catch (err) {
       console.warn("Some rules could not be accessed");
     }
   });
+}
+
+function openModal(event) {
+  infoModal.showModal();
+  const pressionedButton = event.target;
+  console.log(`Botão pressionado: ${pressionedButton.innerText}`);
+
+  fixButtons();
 }
 
 // Exporting functions for external use

@@ -9,7 +9,7 @@ function addOrRemoveAPlayer(remove = false) {
   if (!remove) {
     let button = document.createElement("button");
     button.classList.add("playerButton");
-    button.textContent = `Player ${playersAmount + 1}`;
+    button.textContent = `Jogador ${playersAmount + 1}`;
     playersButtonContainer.appendChild(button);
     console.log("Button created successfully!");
   } else {

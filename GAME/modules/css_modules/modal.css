@@ -1,17 +1,45 @@
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5); /* Dark backdrop for modal dialogs */
+  background-color: rgba(0 0 0 / .3); /* Dark backdrop for modal dialogs */
 }
 
 dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 18vh;
   border: none;
-  border-radius: 0.5rem; /* Rounded corners */
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3); /* Shadow effect */
-  width: 80%;
+  border-radius: .5rem; /* Rounded corners */
+  box-shadow: 0 0 1em rgb( 0 0 0 / .3); /* Shadow effect */
+  width: 40%;
+  height: 65%;
   padding: 20px; /* Internal padding */
+  background-color: rgb(122, 117, 117);
+  filter: blur(0.3px); /* Blur effect */
 }
 
-/* Locals Spy Amount Buttons */
-#localsSpyAmountButtons {
-  display: flex;
-  gap: 2vh;
+/* Estilo para o botão "x" */
+#closeModalButton {
+  position: absolute;
+  top: 0px;
+  right: 2vh;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+#closeModalButton:hover {
+  color: #ccc; /* Cor de hover */
+}
+
+
+/* Media Query for responsiveness on mobile devices */
+@media screen and (max-width: 930px) {
+  dialog {
+    width: 65%;
+    height: 50%;
+  }
 }
