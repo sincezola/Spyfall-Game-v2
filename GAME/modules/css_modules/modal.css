@@ -11,7 +11,7 @@ dialog {
   border: none;
   border-radius: .5rem; /* Rounded corners */
   box-shadow: 0 0 1em rgb( 0 0 0 / .3); /* Shadow effect */
-  width: 40%;
+  width: 30%;
   height: 65%;
   padding: 20px; /* Internal padding */
   background-color: rgb(122, 117, 117);
@@ -35,11 +35,22 @@ dialog {
   color: #ccc; /* Cor de hover */
 }
 
+.divider { /* Cria os estilos da linha divisória */
+  border: none; /* Remove o estilo de borda padrão */
+  border-top: 1px solid #c2c2c28c; /* Define a cor e a espessura da linha */
+  margin: 10px 0; /* Espaçamento acima e abaixo da linha */
+}
+
+#localName {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+}
 
 /* Media Query for responsiveness on mobile devices */
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 925px) {
   dialog {
-    width: 65%;
-    height: 50%;
+    width: 80%;
+    height: 20%;
   }
 }

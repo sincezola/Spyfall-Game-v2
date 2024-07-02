@@ -1,5 +1,7 @@
 // Importing functions and variables from game.js
 import {
+  returnLocal,
+  getRandomLocal,
   colorPlayerButton,
   greyPlayerButton,
   bluePlayerButton,
@@ -19,6 +21,12 @@ const closeModalButton = document.querySelector("#closeModalButton");
 const secondSpyChoice = document.querySelector("#secondSpyChoice");
 const firstSpyChoice = document.querySelector("#firstSpyChoice");
 const infoModal = document.querySelector("#infoModal");
+const localNameContainer = document.querySelector("#localName")
+const playerNameContainer = document.querySelector("#playerName")
+
+// Creating Elements
+const localName = document.createElement("p");
+const playerName = document.createElement("p");
 
 // Function to open the info modal
 function openInfoModal() {
@@ -63,19 +71,21 @@ function spyChoicesLogic(isFirst) {
   }
 }
 
-closeModalButton.onclick = () => infoModal.close();
-
-document.querySelectorAll('.playerButton').forEach(button => {
-  button.addEventListener('click', openModal);
-});
+closeModalButton.onclick = () => {
+  infoModal.close();
+}
 
 // Function to adjust button states based on game running status
 function fixButtons() {
   const playerButton = document.querySelectorAll(".playerButton"); // Dynamically adding buttons to class playerButton
 
+  document.querySelectorAll('.playerButton').forEach(button => { // Filter all the buttons with the class and add and event for them
+    button.addEventListener('click', openModal);
+  });
+
   if (isGameRunning) {
     // Change buttons state if game is running
-    basicButtonsLogics();
+    basicButtonsLogicsGameRunning();
     changePlayersButtonColor(true, bluePlayerButton, colorPlayerButton); // Changes color of player buttons if specified
 
     playerButton.forEach(button => { // Enable all the players buttons if the game is running
@@ -115,11 +125,21 @@ function changePlayersButtonColor(wannaChangeColor, bgColor, color = [255, 255, 
 }
 
 function openModal(event) {
+  // Show the mMdal
   infoModal.showModal();
   const pressionedButton = event.target;
-  console.log(`Botão pressionado: ${pressionedButton.innerText}`);
 
-  fixButtons();
+  // Disable the pressioned button
+  disableButton(pressionedButton);
+
+  // Add the Player Name to Modal
+  playerName.textContent = pressionedButton.innerText;
+  playerNameContainer.appendChild(playerName)
+
+  // Add the Local to Modal
+  localName.textContent = `Local: ${returnLocal()}`;
+  localNameContainer.appendChild(localName)
+
 }
 
 // Exporting Functions --------

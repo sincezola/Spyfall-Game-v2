@@ -2,11 +2,25 @@
 
 import { fixButtons, enableButton, disableButton } from "./ui.js"
 import { addOrRemoveAPlayer } from "./players.js"
+import { locals } from "./locals.js"
 
 // Game state variables
 let place = ""; // Current place in the game
 let isGameRunning = false; // Flag to check if the game is running
 let playersAmount = 3; // Initial number of players
+
+// Select a random item from the locals object
+function getRandomLocal() {
+    const keys = Object.keys(locals); // Get the keys of the locals object
+    const randomKey = keys[Math.floor(Math.random() * keys.length)]; // Select a random key
+    return locals[randomKey]; // Return the value corresponding to the random key
+  }
+  
+let local = getRandomLocal(); // Get a random local
+
+function returnLocal() {
+    return local
+}
 
 // Player button colors
 const bluePlayerButton = [9, 202, 209, 0.808];
@@ -50,6 +64,9 @@ endButton.onclick = function () {
     console.log("Game Ended");
     isGameRunning = false;
     fixButtons();
+
+    // Re-roll the local
+    local = getRandomLocal();
 };
 
 // Function to convert color array to rgba string
@@ -84,4 +101,4 @@ function basicButtonsLogicGameIsntRunning() {
 }
 
 // Exporting Functions --------
-export { basicButtonsLogicsGameRunning, basicButtonsLogicGameIsntRunning, colorPlayerButton, greyPlayerButton, bluePlayerButton, playersAmount, isGameRunning, chooseAPlace, rgba, addButton, removeButton, startButton, endButton };
+export { getRandomLocal, basicButtonsLogicsGameRunning, basicButtonsLogicGameIsntRunning, colorPlayerButton, greyPlayerButton, bluePlayerButton, playersAmount, isGameRunning, chooseAPlace, rgba, addButton, removeButton, startButton, endButton, returnLocal };
