@@ -1,6 +1,6 @@
 // game.js
 
-import { fixButtons } from "./ui.js"
+import { fixButtons, enableButton, disableButton } from "./ui.js"
 import { addOrRemoveAPlayer } from "./players.js"
 
 // Game state variables

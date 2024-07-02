@@ -11,7 +11,7 @@ import {
   addButton,
   removeButton,
   basicButtonsLogicsGameRunning,
-  basicButtonsLogicsGameIsntRunning
+  basicButtonsLogicGameIsntRunning
 } from "./game.js";
 
 // Selecting DOM elements
@@ -123,4 +123,4 @@ function openModal(event) {
 }
 
 // Exporting Functions --------
-export { fixButtons, changePlayersButtonColor };
+export { fixButtons, changePlayersButtonColor, disableButton, enableButton };
