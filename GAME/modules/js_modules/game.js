@@ -5,6 +5,7 @@ import { addOrRemoveAPlayer } from "./players.js"
 import { locals } from "./locals.js"
 
 // Game state variables
+let spyNumber = 0; // The Spy Number
 let place = ""; // Current place in the game
 let isGameRunning = false; // Flag to check if the game is running
 let playersAmount = 3; // Initial number of players
@@ -14,8 +15,8 @@ function getRandomLocal() {
     const keys = Object.keys(locals); // Get the keys of the locals object
     const randomKey = keys[Math.floor(Math.random() * keys.length)]; // Select a random key
     return locals[randomKey]; // Return the value corresponding to the random key
-  }
-  
+}
+
 let local = getRandomLocal(); // Get a random local
 
 function returnLocal() {
@@ -36,11 +37,16 @@ const removeButton = document.querySelector("#removeButton");
 // Initialize button states
 fixButtons();
 
+function chooseSpy() { // Choose a spy
+    spyNumber = Math.floor(Math.random() * playersAmount) + 1;
+}
+
 // Add player button click event
 addButton.onclick = function () {
     addOrRemoveAPlayer();
     playersAmount++;
     console.log(`${playersAmount} Players in the game`);
+
     fixButtons();
 };
 
@@ -57,6 +63,8 @@ startButton.onclick = function () {
     console.log("Game Started");
     isGameRunning = true;
     fixButtons();
+
+    chooseSpy();
 };
 
 // End game button click event
@@ -82,14 +90,14 @@ function chooseAPlace() {
 }
 
 // UI Functions ------------------
-function basicButtonsLogicsGameRunning() { 
+function basicButtonsLogicsGameRunning() {
     // Disable/enable buttons based on game state
     if (!startButton.disabled) disableButton(startButton);
     if (!addButton.disabled) disableButton(addButton);
     if (!removeButton.disabled) disableButton(removeButton);
     if (endButton.disabled) enableButton(endButton);
 }
-  
+
 function basicButtonsLogicGameIsntRunning() {
     // Disable/enable buttons based on game state
     enableButton(startButton);
@@ -101,4 +109,4 @@ function basicButtonsLogicGameIsntRunning() {
 }
 
 // Exporting Functions --------
-export { getRandomLocal, basicButtonsLogicsGameRunning, basicButtonsLogicGameIsntRunning, colorPlayerButton, greyPlayerButton, bluePlayerButton, playersAmount, isGameRunning, chooseAPlace, rgba, addButton, removeButton, startButton, endButton, returnLocal };
+export { spyNumber, chooseSpy, getRandomLocal, basicButtonsLogicsGameRunning, basicButtonsLogicGameIsntRunning, colorPlayerButton, greyPlayerButton, bluePlayerButton, playersAmount, isGameRunning, chooseAPlace, rgba, addButton, removeButton, startButton, endButton, returnLocal };

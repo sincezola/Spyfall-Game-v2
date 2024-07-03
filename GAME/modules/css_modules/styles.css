@@ -12,21 +12,19 @@ body {
 }
 
 main {
-  /* Wraps the entire Main */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  justify-content: space-around; /* Space around sections */
   height: 100vh; /* Full height of the viewport */
 }
 
 main > section {
-  /* Centers content inside the main section */
   display: flex;
   width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 1rem 0; /* Add some vertical spacing between sections */
 }
 
 /* Styles for #configsSection */
@@ -34,7 +32,7 @@ main > section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem; /* Example top margin for spacing */
+  margin-top: 2rem; /* Top margin for spacing */
 }
 
 #spiesText {
@@ -60,6 +58,7 @@ main > section {
 /* Styles for labels inside .localsSpyAmountButtons */
 .localsSpyAmountButtons label {
   display: flex;
+  height: 15vw;
   align-items: center; /* Align content vertically */
   margin-left: 3rem; /* Adjust right margin as needed */
 }
@@ -121,14 +120,20 @@ main > section {
 /* Styles for Add/Remove Buttons Container */
 #AddRemoveButtons {
   display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   gap: 1vh; /* Vertical gap between buttons */
+  margin-bottom: 2rem; /* Bottom margin for spacing */
 }
 
 /* Styles for Start/End Buttons Container */
 #StartEndButtons {
   display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   padding: 8px; /* Padding inside buttons */
   z-index: 999; /* Place buttons above other elements */
+  gap: 1vh; /* Vertical gap between buttons */
 }
 
 /* Individual Button Styles */
@@ -194,21 +199,39 @@ main > section {
 }
 
 /* Media Query for responsiveness on mobile devices */
-@media screen and (max-width: 930px) {
-  .localsSpyAmountButtons {
-    width: 80%; /* Reduce width for smaller screens */
-    flex-wrap: wrap; /* Allow items to wrap as needed */
-    gap: 5vh; /* Reduce gap between items */
-  }
-
+@media screen and (max-width: 500px) {
   /* Adjust labels for smaller screens */
   .localsSpyAmountButtons label {
     margin-left: 0.5rem; /* Smaller margin for labels */
   }
-  
-  /* Adjust spy images for smaller screens */
-  .spyImage {
-    width: 2.8vh; /* Larger image size for smaller screens */
-    margin-right: 8px; /* Smaller margin for images */
+
+  /* Styles for Add/Remove Buttons Container */
+  #AddRemoveButtons {
+    flex-direction: row; /* Keep buttons side by side */
+    justify-content: center; /* Center buttons */
+    gap: 0.5rem; /* Space between buttons */
+    padding: 0 1rem; /* Ensure equal padding on left and right */
+  }
+
+  /* Styles for Start/End Buttons Container */
+  #StartEndButtons {
+    flex-direction: row; /* Keep buttons side by side */
+    justify-content: center; /* Center buttons */
+    gap: 0.5rem; /* Space between buttons */
+    padding: 0 1rem; /* Ensure equal padding on left and right */
+  }
+
+  /* Adjust button sizes */
+  #addButton, #removeButton, #startButton, #endButton {
+    width: 40vw; /* Reduce button width */
+  }
+}
+
+/* Media Query for Spies div on mobile devices */
+@media screen and (max-width: 855px) {
+  .localsSpyAmountButtons {
+    width: 70%; /* Reduce width for smaller screens */
+    height: 12vw;
+    gap: 5vh; /* Reduce gap between items */
   }
 }

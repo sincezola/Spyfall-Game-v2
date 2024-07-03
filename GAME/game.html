@@ -13,11 +13,10 @@
     <!-- The spy favicon -->
     <link rel="shortcut icon" href="bin/spyFav.ico" type="image/x-icon">
 
-    <!-- Installing the "Loto" font with GoogleFonts -->
+    <!-- Installing the "Lato" font with GoogleFonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <main>
@@ -61,14 +60,20 @@
             </div>
         </section>
 
-        <dialog id="infoModal">
-            <button id="closeModalButton">&times;</button> <!-- "x" button for close modal-->
-            <span id="playerName"></span>
-            <hr class="divider">
-            <span id="localName"></span>
-            <!-- Modal content-->
+        <dialog id="infoModal" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+            <div role="document">
+                <header>
+                    <h2 class="centerModal" id="modalTitle">Informações do Jogador</h2>
+                    <button id="closeModalButton" aria-label="Close Modal">&times;</button>
+                </header>
+                <section id="modalDescription">
+                    <p><span id="playerName"></span></p> <!-- The number of player -->
+                    <hr class="divider"> <!-- A slim line to divide the items -->
+                    <p><span class="centerModal" id="localName"></span></p> <!-- Show the local -->
+                    <p><span id="spyContainer"></span></p> <!-- Show if player is the spy -->
+                </section>
+            </div>
         </dialog>
-        
     </main>
 
     <!-- Importing modules -->

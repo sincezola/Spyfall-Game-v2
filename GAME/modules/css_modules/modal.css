@@ -11,7 +11,7 @@ dialog {
   border: none;
   border-radius: .5rem; /* Rounded corners */
   box-shadow: 0 0 1em rgb( 0 0 0 / .3); /* Shadow effect */
-  width: 30%;
+  width: 45%;
   height: 65%;
   padding: 20px; /* Internal padding */
   background-color: rgb(122, 117, 117);
@@ -31,6 +31,18 @@ dialog {
   outline: none;
 }
 
+#spyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
+#modalSpyImage {
+  width: 3vh; /* Adjust image size */
+  height: auto; /* Maintain aspect ratio */
+}
+
 #closeModalButton:hover {
   color: #ccc; /* Cor de hover */
 }
@@ -41,7 +53,7 @@ dialog {
   margin: 10px 0; /* Espaçamento acima e abaixo da linha */
 }
 
-#localName {
+.centerModal {
   display: flex;
   justify-content: center;
   font-size: larger;
